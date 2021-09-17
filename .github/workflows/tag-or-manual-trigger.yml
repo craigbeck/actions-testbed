@@ -1,4 +1,4 @@
-name: Tag or manual trigger
+name: Manually triggered
 
 on:
   workflow_dispatch:
@@ -16,4 +16,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "TAG ${{ github.event.inputs.TAG }}"
-      - run: echo "relase tags ${GITHUB_REF/\/refs\/tags\/}"
+      - run: echo "GITHUB REF ${GITHUB_REF}"
+      - run: echo "release tags ${GITHUB_REF/refs\/tags\/}"
