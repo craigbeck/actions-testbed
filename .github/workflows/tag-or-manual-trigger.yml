@@ -1,0 +1,19 @@
+name: Tag or manual trigger
+
+on:
+  workflow_dispatch:
+    inputs:
+      TAG:
+        description: Tag to build image
+        required: true
+  release:
+    tags:
+      - '*'
+
+jobs:
+  release:
+    name: Build & push image
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "TAG ${{ github.event.inputs.TAG }}"
+      - run: echo "relase tags ${GITHUB_REF/\/refs\/tags\/}"
