@@ -16,9 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "TAG ${{ github.event.inputs.TAG }}"
-          echo "TAG=${{ github.event.inputs.TAG }}" >> $GITHUB_ENV
-      - run: echo "GITHUB REF ${GITHUB_REF}"
-      - run: echo "release tags ${GITHUB_REF/refs\/tags\/}"
-      - run: echo "FINAL TAG ${TAG:-${GITHUB_REF/refs\/tags\/}}"
+          echo "INPUT_TAG=${{ github.event.inputs.TAG }}" >> $GITHUB_ENV
+      - run: |
+          echo "TAG=${INPUT_TAG:-${GITHUB_REF/refs\/tags\/}}" >> $GITHUB_ENV
+      - run: echo "FINAL TAG ${TAG}"
       - run: cat $GITHUB_ENV
