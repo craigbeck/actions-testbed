@@ -18,3 +18,4 @@ jobs:
       - run: echo "TAG ${{ github.event.inputs.TAG }}"
       - run: echo "GITHUB REF ${GITHUB_REF}"
       - run: echo "release tags ${GITHUB_REF/refs\/tags\/}"
+      - run: echo "FINAL TAG ${TAG:-${GITHUB_REF/refs\/tags\/}}"
